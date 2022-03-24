@@ -11,7 +11,7 @@ public class Q53_maxSubArray {
 
 	public static int maxSubArray(int[] nums) {
 	
-		int subsum = 0, sum = 0;
+		int subsum = 0, sum = nums[0];
 		
 		for (int i =0; i<nums.length; i++) {
 			int x=nums[i];
@@ -21,12 +21,8 @@ public class Q53_maxSubArray {
 			} 
 				sum=Math.max(sum, subsum);
 		}
-		if (sum ==0) {
-			Arrays.sort(nums);
-			return nums[nums.length-1];
-		} else {
+		
 			return sum;
-		}
 		
 	}
 	
