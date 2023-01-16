@@ -4,6 +4,11 @@ public class Q13_roman_to_integer {
 	
 	// leetCode solution:
 	static int romanToInt(String s) {
+		s=s.replaceAll("IV", "IIII").replaceAll("IX", "VIIII")
+				.replaceAll("XL", "XXXX")
+				.replaceAll("XC", "LXXXX")
+				.replaceAll("CD", "CCCC")
+				.replaceAll("CM", "DCCCC");
 		int total = 0;
 		char[] charArr = s.toCharArray();
 		for (int i=0;i<charArr.length;i++) {
@@ -12,11 +17,11 @@ public class Q13_roman_to_integer {
 				case 'V': total+=5; break;
 				case 'X': total+=10; break;
 				case 'L': total+=50; break;
+				case 'C': total+=100; break;
+				case 'D': total+=500; break;
+				case 'M': total+=1000; break;
 			}
 		}
-		if (s.contains("IV")) total-=2;
-		else if (s.contains("IX")) total-=2;
-		else if (s.contains("XL")) total-=20;
 		return total;
 	}
 	
@@ -31,6 +36,7 @@ public class Q13_roman_to_integer {
 		System.out.println(romanToInt("IX")); // 9
 		System.out.println(romanToInt("X")); // 10
 		System.out.println(romanToInt("XIII")); //13
+		System.out.println(romanToInt("MCMXCIV"));
 	}
 
 }
